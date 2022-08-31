@@ -10,5 +10,19 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
+  },
+  css: {
+    modules: {
+      localsConvention: 'camelCase'
+    },
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        additionalData: `@import "${path.resolve(
+          __dirname,
+          './src/style/base.less'
+        )}";`
+      }
+    }
   }
 })
