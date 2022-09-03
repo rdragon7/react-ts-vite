@@ -23,11 +23,28 @@ const counterSlice = createSlice({
     },
     decrementByCount(state, { payload }) {
       state.counter -= payload
+    },
+    incAsync(state, { payload }) {
+      state.counter += payload
     }
   }
 })
 
-export const { increment, decrement, incrementByCount, decrementByCount } =
-  counterSlice.actions
+// 异步操作
+export const incrementAsync = (payload: number) => {
+  return (dispatch: any) => {
+    setTimeout(() => {
+      dispatch(incAsync(payload))
+    }, 1000)
+  }
+}
+
+export const {
+  increment,
+  decrement,
+  incrementByCount,
+  decrementByCount,
+  incAsync
+} = counterSlice.actions
 
 export default counterSlice.reducer

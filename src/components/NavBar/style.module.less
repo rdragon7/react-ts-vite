@@ -1,28 +1,40 @@
 .zl-nav-bar-wrapper {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 60px;
+  overflow: hidden;
   color: #fff;
   background-color: #000;
+  // logo
+  .logo {
+    width: 40px;
+    height: 40px;
 
-  .home {
-    width: 100px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
+    img {
+      width: 100%;
+    }
+  }
+  // 导航
+  .nav-bar {
+    display: flex;
+
+    & > div {
+      width: 100px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+    }
   }
 
-  .about {
-    width: 100px;
+  // 切换语言
+  .language {
+    width: 60px;
     height: 60px;
     line-height: 60px;
     text-align: center;
-  }
-
-  .count {
-    width: 100px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
+    cursor: pointer;
+    user-select: none;
   }
 }

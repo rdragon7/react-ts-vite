@@ -5,8 +5,10 @@ import {
   increment,
   decrement,
   incrementByCount,
-  decrementByCount
+  decrementByCount,
+  incrementAsync
 } from '@/store/slice/counterSlice'
+import useLocal from '@/utils/hooks/useLocal'
 
 import style from './style.module.less'
 
@@ -16,7 +18,9 @@ const ZLCount = () => {
   // redux hooks
   const dispatch = useAppDispatch()
   const { counter } = useAppSelector((state: RootState) => state.count)
+
   // other hooks
+  const local = useLocal()
 
   // handles
   const add = () => {
@@ -31,14 +35,20 @@ const ZLCount = () => {
   const subByCount = (num: number) => {
     dispatch(decrementByCount(num))
   }
+  const addAsync = () => {
+    dispatch(incrementAsync(2))
+  }
 
   return (
     <div className={style.zlCountWrapper}>
-      <h2>当前计数为：{counter}</h2>
+      <h2>
+        {local('count')}:{counter}
+      </h2>
       <button onClick={add}>+1</button>
       <button onClick={sub}>-1</button>
       <button onClick={() => addByCount(5)}>+5</button>
       <button onClick={() => subByCount(5)}>-5</button>
+      <button onClick={addAsync}>async+</button>
     </div>
   )
 }
